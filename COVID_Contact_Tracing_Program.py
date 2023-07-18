@@ -7,8 +7,10 @@ Contact_tracing.geometry("500x500")
 # Input name
 def Gui_display():
     name_input = Label(Contact_tracing,text = "Name : ")
-    name_input.place(x=10, y=10)
+    name_input.place(x=10, y=70)
     # Input age
+    age_input = Label(Contact_tracing, text= "Age : ")
+    age_input.place(x=10, y=100)
     # Input Address
     # Input Phone number
     # Input Email
