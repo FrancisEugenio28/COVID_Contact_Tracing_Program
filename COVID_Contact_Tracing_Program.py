@@ -6,12 +6,14 @@ Contact_tracing.geometry("500x500")
 # Make a simple program wherein the user will able to input all the information
 # Input name
 def Gui_display():
-    name_input = Label(Contact_tracing,text = "Name : ")
+    name_input = Label(Contact_tracing,text = "NAME : ")
     name_input.place(x=10, y=70)
     # Input age
-    age_input = Label(Contact_tracing, text= "Age : ")
+    age_input = Label(Contact_tracing, text= "AGE : ")
     age_input.place(x=10, y=100)
     # Input Address
+    address_input = Label(Contact_tracing, text= "ADDRESS : ")
+    address_input.place(x=10, y=130)
     # Input Phone number
     # Input Email
     # Ask the user if they are vaccinated
