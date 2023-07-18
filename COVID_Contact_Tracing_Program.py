@@ -1,4 +1,8 @@
+from tkinter import Tk
 # Create a simple GUI for COVID contract tracing
+top = Tk()
+top.title("COVID-19 Contact Tracing")
+top.geometry("500x500")
 # Make a simple program wherein the user will able to input all the information
     # Input name
     # Input age
@@ -17,3 +21,4 @@
     # print all the data into a txt file 
     # store it in the data base
 # add a feature wherein the user may search for all the entries 
+top.mainloop()
