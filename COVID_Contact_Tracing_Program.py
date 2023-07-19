@@ -5,8 +5,13 @@ Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
 Contact_tracing.geometry("500x500")
 # Make a simple program wherein the user will able to input all the information
-# Input name
 def Gui_display():
+    # create a padding for personal information
+    personalinfo_frame = Frame(Contact_tracing, bd=2, relief="groove")
+    personalinfo_frame.place(x=5, y=50, width=490, height=185)
+    personalinfo_label = Label(Contact_tracing,text = "PERSONAL INFORMATION")
+    personalinfo_label.place(x=15, y=40)
+    # Input name
     name_label = Label(Contact_tracing,text = "NAME : ")
     name_label.place(x=10, y=70)
     name_entry = Entry(Contact_tracing,width="30") 
@@ -27,8 +32,8 @@ def Gui_display():
     address_entry = Entry(Contact_tracing,width="60") 
     address_entry.place(x=90,y=140)
     # Input Phone number
-    phone_num_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
-    phone_num_label.place(x=10, y=170)
+    phonenum_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
+    phonenum_label.place(x=10, y=170)
     # Input Email
     email_label = Label(Contact_tracing, text= "E-MAIL : ")
     email_label.place(x=10, y=200)
