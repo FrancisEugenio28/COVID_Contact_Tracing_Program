@@ -2,24 +2,26 @@ from tkinter import *
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
-Contact_tracing.geometry("500x500")
+Contact_tracing.geometry("300x500")
 # Make a simple program wherein the user will able to input all the information
 # Input name
 def Gui_display():
-    name_input = Label(Contact_tracing,text = "NAME : ")
-    name_input.place(x=10, y=70)
+    name_label = Label(Contact_tracing,text = "NAME : ")
+    name_label.place(x=10, y=70)
+    name_entry = Entry(Contact_tracing,width="30") 
+    name_entry.place(x=70,y=70)
     # Input age
-    age_input = Label(Contact_tracing, text= "AGE : ")
-    age_input.place(x=10, y=100)
+    age_label = Label(Contact_tracing, text= "AGE : ")
+    age_label.place(x=10, y=100)
     # Input Address
-    address_input = Label(Contact_tracing, text= "ADDRESS : ")
-    address_input.place(x=10, y=130)
+    address_label = Label(Contact_tracing, text= "ADDRESS : ")
+    address_label.place(x=10, y=130)
     # Input Phone number
-    phone_num_input = Label(Contact_tracing, text= "PHONE NUMBER : ")
-    phone_num_input.place(x=10, y=160)
+    phone_num_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
+    phone_num_label.place(x=10, y=160)
     # Input Email
-    email_input = Label(Contact_tracing, text= "E-MAIL : ")
-    email_input.place(x=10, y=190)
+    email_label = Label(Contact_tracing, text= "E-MAIL : ")
+    email_label.place(x=10, y=190)
     # Ask the user if they are vaccinated
     # Ask the users if they experience any symptoms of the disease for the past weeks
     # Ask the users if they been with a person with possible symptoms
