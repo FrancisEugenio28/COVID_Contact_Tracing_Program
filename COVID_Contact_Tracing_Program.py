@@ -49,9 +49,48 @@ def Gui_display():
     # Ask the user if they are vaccinated
     vacstatus_label = Label(Contact_tracing, text= "VACCINE STATUS : ")
     vacstatus_label.place(x=10, y=265)
-    vacstatus_entry = ttk.Combobox(Contact_tracing, width="50",values=["None", "First Dose", "Second Dose (Fully Vaccinated)", "First Booster", "Second Booster"])
+    vacstatus_entry = ttk.Combobox(Contact_tracing, width="50",values=["None", "First Dose", "Second Dose (Fully Vaccinated)", "First Booster Shot", "Second Booster Shot"])
     vacstatus_entry.place(x=120,y=265)
     # Ask the users if they experience any symptoms of the disease for the past weeks
+    symptoms_label = Label(Contact_tracing, text="HAVE YOU EXPERIENCE THESE SYPMTOMS FOR PAST 7 DAYS?")
+    symptoms_label.place(x=10,y=295)
+    # create checkbutton for each symptoms
+    # fever
+    fever_btn = Checkbutton(Contact_tracing, text="Fever") 
+    fever_btn.place(x=10,y=315)
+    # cough
+    cough_btn = Checkbutton(Contact_tracing, text="Cough") 
+    cough_btn.place(x=10,y=335)
+    # colds
+    cold_btn = Checkbutton(Contact_tracing, text="Colds") 
+    cold_btn.place(x=10,y=355)
+    # Body pains
+    bodypain_btn = Checkbutton(Contact_tracing, text="Body Pain") 
+    bodypain_btn.place(x=110,y=315)
+    # sore throat
+    sorethroat_btn = Checkbutton(Contact_tracing, text="Sore Throat") 
+    sorethroat_btn.place(x=110,y=335)
+    # diarrhea
+    diarrhea_btn = Checkbutton(Contact_tracing, text="Diarrhea") 
+    diarrhea_btn.place(x=110,y=355)
+    # headache
+    headache_btn = Checkbutton(Contact_tracing, text="Headache") 
+    headache_btn.place(x=210,y=315)
+    # shortness of breath
+    shortbreath_btn = Checkbutton(Contact_tracing, text="Shortness of Breath") 
+    shortbreath_btn.place(x=210,y=335)
+    # difficulty of breathing
+    diffbreath_btn = Checkbutton(Contact_tracing, text="Difficulty of Breathing") 
+    diffbreath_btn.place(x=210,y=355)
+    # loss of taste
+    ltaste_btn = Checkbutton(Contact_tracing, text="Loss of Taste") 
+    ltaste_btn.place(x=10,y=375)
+    # loss of smell
+    lsmell_btn = Checkbutton(Contact_tracing, text="Loss of Smell") 
+    lsmell_btn.place(x=110,y=375)
+    # none of the above
+    none_btn = Checkbutton(Contact_tracing, text="None of the Above") 
+    none_btn.place(x=210,y=375)
     # Ask the users if they been with a person with possible symptoms
         #(PARENT OR GUARDIAN INFORMATION)
         # Input name
