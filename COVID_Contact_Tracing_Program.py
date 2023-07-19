@@ -5,6 +5,14 @@ Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
 Contact_tracing.geometry("500x500")
 radio = IntVar()
+# scrolling feature
+# Create a frame to hold the labels
+# Create a canvas inside the frame
+# Add a vertical scrollbar to the canvas
+# Create another frame inside the canvas
+# Add the inner frame to the canvas
+# Function to update the canvas scroll region
+# Bind the function to the inner frame
 # Make a simple program wherein the user will able to input all the information
 def Gui_display():
     # create a padding for personal information
