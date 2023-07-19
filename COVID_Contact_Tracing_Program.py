@@ -47,6 +47,10 @@ def Gui_display():
     tracing_label = Label(Contact_tracing,text = "CONTACT TRACING")
     tracing_label.place(x=15, y=240)
     # Ask the user if they are vaccinated
+    vacstatus_label = Label(Contact_tracing, text= "VACCINE STATUS : ")
+    vacstatus_label.place(x=10, y=265)
+    vacstatus_entry = ttk.Combobox(Contact_tracing, width="50",values=["None", "First Dose", "Second Dose (Fully Vaccinated)", "First Booster", "Second Booster"])
+    vacstatus_entry.place(x=120,y=265)
     # Ask the users if they experience any symptoms of the disease for the past weeks
     # Ask the users if they been with a person with possible symptoms
         #(PARENT OR GUARDIAN INFORMATION)
