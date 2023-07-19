@@ -12,16 +12,18 @@ def Gui_display():
     name_entry.place(x=70,y=70)
     # Input age
     age_label = Label(Contact_tracing, text= "AGE : ")
-    age_label.place(x=10, y=100)
+    age_label.place(x=10, y=110)
+    age_entry = Scale(Contact_tracing, from_=1, to=100, length="190",orient="horizontal")
+    age_entry.place(x=65,y=90)
     # Input Address
     address_label = Label(Contact_tracing, text= "ADDRESS : ")
-    address_label.place(x=10, y=130)
+    address_label.place(x=10, y=140)
     # Input Phone number
     phone_num_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
-    phone_num_label.place(x=10, y=160)
+    phone_num_label.place(x=10, y=170)
     # Input Email
     email_label = Label(Contact_tracing, text= "E-MAIL : ")
-    email_label.place(x=10, y=190)
+    email_label.place(x=10, y=200)
     # Ask the user if they are vaccinated
     # Ask the users if they experience any symptoms of the disease for the past weeks
     # Ask the users if they been with a person with possible symptoms
