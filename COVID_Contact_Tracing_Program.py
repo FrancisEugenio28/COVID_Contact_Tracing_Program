@@ -34,9 +34,13 @@ def Gui_display():
     # Input Phone number
     phonenum_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
     phonenum_label.place(x=10, y=170)
+    phonenum_entry = Entry(Contact_tracing,width="55")
+    phonenum_entry.place(x=120, y=170)
     # Input Email
     email_label = Label(Contact_tracing, text= "E-MAIL : ")
     email_label.place(x=10, y=200)
+    email_entry = Entry(Contact_tracing,width="62")
+    email_entry.place(x=80, y=200)
     # Ask the user if they are vaccinated
     # Ask the users if they experience any symptoms of the disease for the past weeks
     # Ask the users if they been with a person with possible symptoms
