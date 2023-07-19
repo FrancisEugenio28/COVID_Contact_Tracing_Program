@@ -4,6 +4,7 @@ from tkinter import ttk
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
 Contact_tracing.geometry("500x500")
+radio = IntVar()
 # Make a simple program wherein the user will able to input all the information
 def Gui_display():
     # create a padding for personal information
@@ -96,7 +97,11 @@ def Gui_display():
     exposure_label.place(x=10,y=405)
     # create radiobutton for yes and no option
     # yes
+    yes_btn = Radiobutton(Contact_tracing, text="YES",variable=radio,value="1") 
+    yes_btn.place(x=10,y=425)
     # no
+    no_btn = Radiobutton(Contact_tracing, text="NO",variable=radio,value="2") 
+    no_btn.place(x=10,y=445)
         #(PARENT OR GUARDIAN INFORMATION)
         # Input name
         # Input Relationship to the Guardian/Parent
