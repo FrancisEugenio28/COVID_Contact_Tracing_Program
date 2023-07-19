@@ -3,16 +3,28 @@ from tkinter import ttk
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
-Contact_tracing.geometry("500x500")
+Contact_tracing.geometry("515x500")
 radio = IntVar()
 # scrolling feature
 # Create a frame to hold the labels
+frame = Frame(Contact_tracing)
+frame.pack(fill=BOTH, expand=True)
 # Create a canvas inside the frame
+canvas = Canvas(frame)
+canvas.pack(side=LEFT, fill=BOTH, expand=True)
 # Add a vertical scrollbar to the canvas
+scrollbar = Scrollbar(frame, orient=VERTICAL, command=canvas.yview)
+scrollbar.pack(side=RIGHT, fill=Y)
+canvas.configure(yscrollcommand=scrollbar.set)
 # Create another frame inside the canvas
+inner_frame = Frame(canvas)
 # Add the inner frame to the canvas
+canvas.create_window((0, 0), window=inner_frame, anchor="nw")
 # Function to update the canvas scroll region
-# Bind the function to the inner frame
+def update_scroll_region(event):
+    canvas.configure(scrollregion=canvas.bbox("all"))
+# Bind the function to the canvas
+canvas.bind("<Configure>", update_scroll_region)
 # Make a simple program wherein the user will able to input all the information
 def Gui_display():
     # create a padding for personal information
@@ -52,7 +64,7 @@ def Gui_display():
     email_entry.place(x=80, y=200)
     # create a padding for asking users for their contact history
     tracing_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    tracing_frame.place(x=5, y=250, width=490, height=240)
+    tracing_frame.place(x=5, y=250, width=490, height=340)
     tracing_label = Label(Contact_tracing,text = "CONTACT TRACING")
     tracing_label.place(x=15, y=240)
     # Ask the user if they are vaccinated
@@ -120,4 +132,5 @@ def Gui_display():
     # store it in the data base
 # add a feature wherein the user may search for all the entries 
 Gui_display()
+update_scroll_region(None)
 Contact_tracing.mainloop()
