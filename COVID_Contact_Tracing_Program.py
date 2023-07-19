@@ -2,7 +2,7 @@ from tkinter import *
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
-Contact_tracing.geometry("300x500")
+Contact_tracing.geometry("500x500")
 # Make a simple program wherein the user will able to input all the information
 # Input name
 def Gui_display():
@@ -18,6 +18,8 @@ def Gui_display():
     # Input Address
     address_label = Label(Contact_tracing, text= "ADDRESS : ")
     address_label.place(x=10, y=140)
+    address_entry = Entry(Contact_tracing,width="60") 
+    address_entry.place(x=90,y=140)
     # Input Phone number
     phone_num_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
     phone_num_label.place(x=10, y=170)
