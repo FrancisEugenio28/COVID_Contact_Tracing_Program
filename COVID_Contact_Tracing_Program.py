@@ -32,10 +32,10 @@ def Gui_display():
     address_entry = Entry(Contact_tracing,width="60") 
     address_entry.place(x=90,y=140)
     # Input Phone number
-    phonenum_label = Label(Contact_tracing, text= "PHONE NUMBER : ")
-    phonenum_label.place(x=10, y=170)
-    phonenum_entry = Entry(Contact_tracing,width="55")
-    phonenum_entry.place(x=120, y=170)
+    contnum_label = Label(Contact_tracing, text= "CONTACT NUMBER : ")
+    contnum_label.place(x=10, y=170)
+    contnum_entry = Entry(Contact_tracing,width="51")
+    contnum_entry.place(x=145, y=170)
     # Input Email
     email_label = Label(Contact_tracing, text= "E-MAIL : ")
     email_label.place(x=10, y=200)
