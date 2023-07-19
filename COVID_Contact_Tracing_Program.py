@@ -41,6 +41,11 @@ def Gui_display():
     email_label.place(x=10, y=200)
     email_entry = Entry(Contact_tracing,width="62")
     email_entry.place(x=80, y=200)
+    # create a padding for asking users for their contact history
+    tracing_frame = Frame(Contact_tracing, bd=2, relief="groove")
+    tracing_frame.place(x=5, y=250, width=490, height=185)
+    tracing_label = Label(Contact_tracing,text = "CONTACT TRACING")
+    tracing_label.place(x=15, y=240)
     # Ask the user if they are vaccinated
     # Ask the users if they experience any symptoms of the disease for the past weeks
     # Ask the users if they been with a person with possible symptoms
