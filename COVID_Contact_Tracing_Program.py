@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
@@ -10,10 +11,15 @@ def Gui_display():
     name_label.place(x=10, y=70)
     name_entry = Entry(Contact_tracing,width="30") 
     name_entry.place(x=70,y=70)
+    # Suffix
+    suffix_label = Label(Contact_tracing, text= "SUFFIX : ")
+    suffix_label.place(x=275,y=70)
+    suffix_entry = Entry(Contact_tracing,width="18")
+    suffix_entry.place(x=340,y=70)
     # Input age
     age_label = Label(Contact_tracing, text= "AGE : ")
     age_label.place(x=10, y=110)
-    age_entry = Scale(Contact_tracing, from_=1, to=100, length="190",orient="horizontal")
+    age_entry = Scale(Contact_tracing, from_=1, to=100, length="385",orient="horizontal")
     age_entry.place(x=65,y=90)
     # Input Address
     address_label = Label(Contact_tracing, text= "ADDRESS : ")
