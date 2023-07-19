@@ -43,7 +43,7 @@ def Gui_display():
     email_entry.place(x=80, y=200)
     # create a padding for asking users for their contact history
     tracing_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    tracing_frame.place(x=5, y=250, width=490, height=185)
+    tracing_frame.place(x=5, y=250, width=490, height=240)
     tracing_label = Label(Contact_tracing,text = "CONTACT TRACING")
     tracing_label.place(x=15, y=240)
     # Ask the user if they are vaccinated
@@ -92,6 +92,11 @@ def Gui_display():
     none_btn = Checkbutton(Contact_tracing, text="None of the Above") 
     none_btn.place(x=210,y=375)
     # Ask the users if they been with a person with possible symptoms
+    exposure_label = Label(Contact_tracing, text="HAVE YOU HAD EXPOSURE TO A PROBABLE OR CONFIRMED CASE IN LAST 14 DAYS?")
+    exposure_label.place(x=10,y=405)
+    # create radiobutton for yes and no option
+    # yes
+    # no
         #(PARENT OR GUARDIAN INFORMATION)
         # Input name
         # Input Relationship to the Guardian/Parent
