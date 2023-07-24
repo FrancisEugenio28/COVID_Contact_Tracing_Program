@@ -3,7 +3,7 @@ from tkinter import ttk
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
-Contact_tracing.geometry("500x600")
+Contact_tracing.geometry("500x625")
 radio = IntVar()
 # Make a simple program wherein the user will able to input all the information
 def Gui_display():
@@ -104,7 +104,7 @@ def Gui_display():
     no_btn.place(x=10,y=445)
     #(PARENT OR GUARDIAN INFORMATION)
     parentinfo_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    parentinfo_frame.place(x=5, y=500, width=490, height=230)
+    parentinfo_frame.place(x=5, y=500, width=490, height=80)
     parentinfo_label = Label(Contact_tracing,text = "PARENT / GUARDIAN INFORMATION")
     parentinfo_label.place(x=15, y=490)
     # Input name
@@ -118,6 +118,8 @@ def Gui_display():
     vacstatus_entry = ttk.Combobox(Contact_tracing, width="50",values=["Mother", "Father", "Step-Mother", "Step-Father", "Auntie", "Uncle", "Sister", "Brother"])
     vacstatus_entry.place(x=120,y=545)
     # create a submit button 
+    submit_btn = Button(Contact_tracing, text="SUBMIT", )
+    submit_btn.place(x=200, y=590)
 # collect all the data
     # create a data base 
     # print all the data into a txt file 
