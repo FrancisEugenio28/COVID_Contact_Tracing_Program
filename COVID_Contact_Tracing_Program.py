@@ -3,7 +3,7 @@ from tkinter import ttk
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
-Contact_tracing.geometry("515x500")
+Contact_tracing.geometry("500x600")
 radio = IntVar()
 # Make a simple program wherein the user will able to input all the information
 def Gui_display():
@@ -44,7 +44,7 @@ def Gui_display():
     email_entry.place(x=80, y=200)
     # create a padding for asking users for their contact history
     tracing_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    tracing_frame.place(x=5, y=250, width=490, height=340)
+    tracing_frame.place(x=5, y=250, width=490, height=230)
     tracing_label = Label(Contact_tracing,text = "CONTACT TRACING")
     tracing_label.place(x=15, y=240)
     # Ask the user if they are vaccinated
@@ -102,9 +102,21 @@ def Gui_display():
     # no
     no_btn = Radiobutton(Contact_tracing, text="NO",variable=radio,value="2") 
     no_btn.place(x=10,y=445)
-        #(PARENT OR GUARDIAN INFORMATION)
-        # Input name
-        # Input Relationship to the Guardian/Parent
+    #(PARENT OR GUARDIAN INFORMATION)
+    parentinfo_frame = Frame(Contact_tracing, bd=2, relief="groove")
+    parentinfo_frame.place(x=5, y=500, width=490, height=230)
+    parentinfo_label = Label(Contact_tracing,text = "PARENT / GUARDIAN INFORMATION")
+    parentinfo_label.place(x=15, y=490)
+    # Input name
+    parentname_label = Label(Contact_tracing,text = "NAME : ")
+    parentname_label.place(x=10, y=520)
+    parentname_entry = Entry(Contact_tracing,width="62") 
+    parentname_entry.place(x=70,y=520)
+    # Input Relationship to the Guardian/Parent
+    vacstatus_label = Label(Contact_tracing, text= "RELATIONSHIP : ")
+    vacstatus_label.place(x=10, y=545)
+    vacstatus_entry = ttk.Combobox(Contact_tracing, width="50",values=["Mother", "Father", "Step-Mother", "Step-Father", "Auntie", "Uncle", "Sister", "Brother"])
+    vacstatus_entry.place(x=120,y=545)
     # create a submit button 
 # collect all the data
     # create a data base 
