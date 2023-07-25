@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import csv
+import random
 
 # Make a simple programself. wherein the user will able to input all the information
 class registration:
@@ -162,6 +163,11 @@ class registration:
         self.submit_btn.place(x=365, y=555)
         # mainloop
         self.Contact_tracing.mainloop()
+
+    # Function to generate a random referral number
+    def generate_referral_number(self):
+        return random.randint(100000, 999999)
+    
     # collect all the data
     def collect_data(self):
         last_name = self.lastname_entry.get()
@@ -197,6 +203,12 @@ class registration:
             "Loss of Smell": self.lsmell_btn.get(),
             "None of the Above": self.none_btn.get()
         }
+
+        # Generate a random referral number
+        referral_number = self.generate_referral_number()
+        
+        # Add the referral number to the data list
+        data.append(referral_number)
         
         if all(value == '' for value in symptoms_data.values()):
             messagebox.showwarning("Symptoms Not Selected", "Please select at least one symptom.")
