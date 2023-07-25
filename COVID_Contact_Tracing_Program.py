@@ -173,17 +173,6 @@ class registration:
         gender = self.gender_entry.get()
         email = self.email_entry.get()
         vacination_status = self.vacstatus_entry.get()
-        fever = self.fever_btn.getboolean()
-        cough = self.cough_btn.getboolean()
-        cold = self.cold_btn.getboolean()
-        body_pain = self.bodypain_btn.getboolean()
-        sore_throat = self.sorethroat_btn.getboolean()
-        diarrhea = self.diarrhea_btn.getboolean()
-        headache = self.headache_btn.getboolean()
-        short_breath = self.shortbreath_btn.getboolean()
-        diff_breath = self.diffbreath_btn.getboolean()
-        loss_taste = self.ltaste_btn.getboolean()
-        loss_smell = self.lsmell_btn.getboolean()
         none = self.none_btn.getboolean()
         yes = self.yes_btn.getboolean()
         no = self.no_btn.getboolean()
@@ -193,10 +182,28 @@ class registration:
         guardian_contact_num = self.parent_contnum_entry.get()
         guardian_email = self.parent_email_entry.get()
         agreement = self.agreement_btn.getboolean()
+        # Create a dictionary to store the symptoms data
+        symptoms_data = {
+            "Fever": self.fever_btn.get(),
+            "Cough": self.cough_btn.get(),
+            "Colds": self.cold_btn.get(),
+            "Body Pain": self.bodypain_btn.get(),
+            "Sore Throat": self.sorethroat_btn.get(),
+            "Diarrhea": self.diarrhea_btn.get(),
+            "Headache": self.headache_btn.get(),
+            "Shortness of Breath": self.shortbreath_btn.get(),
+            "Difficulty of Breathing": self.diffbreath_btn.get(),
+            "Loss of Taste": self.ltaste_btn.get(),
+            "Loss of Smell": self.lsmell_btn.get(),
+            "None of the Above": self.none_btn.get()
+            }
+        if all(value == '' for value in symptoms_data.values()):
+            messagebox.showwarning("Please fill up all the Entries.")
+            return
         if not agreement:
             messagebox.showwarning("Agreement Required", "Please check the agreement box before submitting.")
             return
-        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vacination_status or not fever or not cough or not cold or not body_pain or not sore_throat or not diarrhea or not headache or not short_breath or not diff_breath or not loss_smell or not loss_taste or not none or not yes or not no or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
+        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vacination_status or not none or not yes or not no or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
             messagebox.showwarning("Please fill up all the Entries.")
             return
         # create a data base 
@@ -231,15 +238,24 @@ class registration:
             guardian_contact_num,
             guardian_email
         ]
-
+        # Check if a csv file exists
+        file_checker = False
+        try:
+            with open("Data_List.csv", "r") as List:
+                read = csv.reader(List)
+                if any(read):
+                    file_checker = True
+        except FileNotFoundError:
+            pass
         # Write data to CSV file
         with open('contact_tracing_data.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(data)
+            if not file_checker:
+                writer.writerow(data)
 
         # Show a success message after storing the data
         messagebox.showinfo("Data Saved", "Your data has been saved successfully!")
-        # print all the data into a txt file 
-        # store it in the data base
+        # Close the program
+        self.Contact_tracing.destroy()
 
         
