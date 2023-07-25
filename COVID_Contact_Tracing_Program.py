@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
+import csv
 
 # Make a simple programself. wherein the user will able to input all the information
 class registration:
@@ -12,8 +14,8 @@ class registration:
         # create a padding for header
         self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove")
         self.head_frame.place(x=5, y=5, width=835, height=100)
-        head_label = Label(self.Contact_tracing, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"))
-        head_label.pack(pady=10)
+        self.head_label = Label(self.Contact_tracing, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"))
+        self.head_label.pack(pady=10)
         # create a padding for personal information
         self.personalinfo_frame = Frame(self.Contact_tracing, bd=2, relief="groove")
         self.personalinfo_frame.place(x=5, y=50, width=835, height=185)
@@ -22,8 +24,8 @@ class registration:
         # Input last name
         lastname_label = Label(self.Contact_tracing,text = "LAST NAME : ")
         lastname_label.place(x=10, y=70)
-        self.lastname_labelname_entry = Entry(self.Contact_tracing,width="28") 
-        self.lastname_labelname_entry.place(x=90,y=70)
+        self.lastname_entry = Entry(self.Contact_tracing,width="28") 
+        self.lastname_entry.place(x=90,y=70)
         # input middle name
         middlename_label = Label(self.Contact_tracing, text= "MIDDLE NAME : ")
         middlename_label.place(x=275,y=70)
@@ -32,8 +34,8 @@ class registration:
         # input first name
         firstname_label = Label(self.Contact_tracing,text = "FIRST NAME : ")
         firstname_label.place(x=560, y=70)
-        self.firstname_labelname_entry = Entry(self.Contact_tracing,width="28") 
-        self.firstname_labelname_entry.place(x=640,y=70)
+        self.firstname_entry = Entry(self.Contact_tracing,width="28") 
+        self.firstname_entry.place(x=640,y=70)
         # Input age
         age_label = Label(self.Contact_tracing, text= "AGE : ")
         age_label.place(x=10, y=110)
@@ -128,13 +130,13 @@ class registration:
         # input last name
         parent_lastname_label = Label(self.Contact_tracing,text = "LAST NAME : ")
         parent_lastname_label.place(x=10, y=440)
-        self.parent_lastname_labelname_entry = Entry(self.Contact_tracing,width="28") 
-        self.parent_lastname_labelname_entry.place(x=90,y=440)
+        self.parent_lastname_entry = Entry(self.Contact_tracing,width="28") 
+        self.parent_lastname_entry.place(x=90,y=440)
         # input first name
         parent_firstname_label = Label(self.Contact_tracing,text = "FIRST NAME : ")
         parent_firstname_label.place(x=275, y=440)
-        self.parent_firstname_labelname_entry = Entry(self.Contact_tracing,width="28") 
-        self.parent_firstname_labelname_entry.place(x=370,y=440)
+        self.parent_firstname_entry = Entry(self.Contact_tracing,width="28") 
+        self.parent_firstname_entry.place(x=370,y=440)
         # Input Relationship to the Guardian/Parent
         relationship_label = Label(self.Contact_tracing, text= "RELATIONSHIP : ")
         relationship_label.place(x=560, y=440)
@@ -156,12 +158,87 @@ class registration:
         self.agreement_btn = Checkbutton(self.Contact_tracing, text="I AGREE") 
         self.agreement_btn.place(x=360,y=530)
         # create a submit button 
-        self.submit_btn = Button(self.Contact_tracing, text="SUBMIT", )
+        self.submit_btn = Button(self.Contact_tracing, text="SUBMIT", command= self.collect_data )
         self.submit_btn.place(x=365, y=555)
         # mainloop
         self.Contact_tracing.mainloop()
     # collect all the data
+    def collect_data(self):
+        last_name = self.lastname_entry.get()
+        middle_name = self.middlename_entry.get()
+        first_name = self.firstname_entry.get()
+        age = self.age_entry.get()
+        address = self.address_entry.get()
+        contact_num = self.contnum_entry.get()
+        gender = self.gender_entry.get()
+        email = self.email_entry.get()
+        vacination_status = self.vacstatus_entry.get()
+        fever = self.fever_btn.getboolean()
+        cough = self.cough_btn.getboolean()
+        cold = self.cold_btn.getboolean()
+        body_pain = self.bodypain_btn.getboolean()
+        sore_throat = self.sorethroat_btn.getboolean()
+        diarrhea = self.diarrhea_btn.getboolean()
+        headache = self.headache_btn.getboolean()
+        short_breath = self.shortbreath_btn.getboolean()
+        diff_breath = self.diffbreath_btn.getboolean()
+        loss_taste = self.ltaste_btn.getboolean()
+        loss_smell = self.lsmell_btn.getboolean()
+        none = self.none_btn.getboolean()
+        yes = self.yes_btn.getboolean()
+        no = self.no_btn.getboolean()
+        guardian_last_name = self.parent_lastname_entry.get()
+        guardian_first_name = self.parent_firstname_entry.get()
+        guardian_relationship = self.relationship_entry.get()
+        guardian_contact_num = self.parent_contnum_entry.get()
+        guardian_email = self.parent_email_entry.get()
+        agreement = self.agreement_btn.getboolean()
+        if not agreement:
+            messagebox.showwarning("Agreement Required", "Please check the agreement box before submitting.")
+            return
+        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vacination_status or not fever or not cough or not cold or not body_pain or not sore_throat or not diarrhea or not headache or not short_breath or not diff_breath or not loss_smell or not loss_taste or not none or not yes or not no or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
+            messagebox.showwarning("Please fill up all the Entries.")
+            return
         # create a data base 
+        # Create a list of collected data
+        data = [
+            last_name,
+            middle_name,
+            first_name,
+            age,
+            address,
+            contact_num,
+            gender,
+            email,
+            vacination_status,
+            fever,
+            cough,
+            cold,
+            body_pain,
+            sore_throat,
+            diarrhea,
+            headache,
+            short_breath,
+            diff_breath,
+            loss_taste,
+            loss_smell,
+            none,
+            yes,
+            no,
+            guardian_last_name,
+            guardian_first_name,
+            guardian_relationship,
+            guardian_contact_num,
+            guardian_email
+        ]
+
+        # Write data to CSV file
+        with open('contact_tracing_data.csv', mode='a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(data)
+
+        # Show a success message after storing the data
+        messagebox.showinfo("Data Saved", "Your data has been saved successfully!")
         # print all the data into a txt file 
         # store it in the data base
 
