@@ -172,8 +172,7 @@ class registration:
         contact_num = self.contnum_entry.get()
         gender = self.gender_entry.get()
         email = self.email_entry.get()
-        vacination_status = self.vacstatus_entry.get()
-        none = self.none_btn.getboolean()
+        vaccination_status = self.vacstatus_entry.get()
         yes = self.yes_btn.getboolean()
         no = self.no_btn.getboolean()
         guardian_last_name = self.parent_lastname_entry.get()
@@ -182,6 +181,7 @@ class registration:
         guardian_contact_num = self.parent_contnum_entry.get()
         guardian_email = self.parent_email_entry.get()
         agreement = self.agreement_btn.getboolean()
+        
         # Create a dictionary to store the symptoms data
         symptoms_data = {
             "Fever": self.fever_btn.get(),
@@ -196,17 +196,20 @@ class registration:
             "Loss of Taste": self.ltaste_btn.get(),
             "Loss of Smell": self.lsmell_btn.get(),
             "None of the Above": self.none_btn.get()
-            }
+        }
+        
         if all(value == '' for value in symptoms_data.values()):
-            messagebox.showwarning("Please fill up all the Entries.")
+            messagebox.showwarning("Symptoms Not Selected", "Please select at least one symptom.")
             return
+        
         if not agreement:
             messagebox.showwarning("Agreement Required", "Please check the agreement box before submitting.")
             return
-        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vacination_status or not none or not yes or not no or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
+        
+        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vaccination_status or not yes or not no or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
             messagebox.showwarning("Please fill up all the Entries.")
             return
-        # create a data base 
+
         # Create a list of collected data
         data = [
             last_name,
@@ -217,19 +220,8 @@ class registration:
             contact_num,
             gender,
             email,
-            vacination_status,
-            fever,
-            cough,
-            cold,
-            body_pain,
-            sore_throat,
-            diarrhea,
-            headache,
-            short_breath,
-            diff_breath,
-            loss_taste,
-            loss_smell,
-            none,
+            vaccination_status,
+            symptoms_data,
             yes,
             no,
             guardian_last_name,
@@ -238,6 +230,7 @@ class registration:
             guardian_contact_num,
             guardian_email
         ]
+
         # Check if a csv file exists
         file_checker = False
         try:
@@ -247,15 +240,45 @@ class registration:
                     file_checker = True
         except FileNotFoundError:
             pass
+        
         # Write data to CSV file
         with open('contact_tracing_data.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             if not file_checker:
-                writer.writerow(data)
+                writer.writerow([
+                    "Last Name",
+                    "Middle Name",
+                    "First Name",
+                    "Age",
+                    "Address",
+                    "Contact Number",
+                    "Gender",
+                    "Email",
+                    "Vaccination Status",
+                    "Fever",
+                    "Cough",
+                    "Colds",
+                    "Body Pain",
+                    "Sore Throat",
+                    "Diarrhea",
+                    "Headache",
+                    "Shortness of Breath",
+                    "Difficulty of Breathing",
+                    "Loss of Taste",
+                    "Loss of Smell",
+                    "None of the Above",
+                    "Exposure (Yes)",
+                    "Exposure (No)",
+                    "Guardian Last Name",
+                    "Guardian First Name",
+                    "Guardian Relationship",
+                    "Guardian Contact Number",
+                    "Guardian Email"
+                ])
+            writer.writerow(data)
 
         # Show a success message after storing the data
         messagebox.showinfo("Data Saved", "Your data has been saved successfully!")
         # Close the program
         self.Contact_tracing.destroy()
-
         
