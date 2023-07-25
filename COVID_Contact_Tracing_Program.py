@@ -3,48 +3,58 @@ from tkinter import ttk
 # Create a simple GUI for COVID contract tracing
 Contact_tracing = Tk()
 Contact_tracing.title("COVID-19 Contact Tracing")
-Contact_tracing.geometry("500x690")
+Contact_tracing.geometry("850x680")
 radio = IntVar()
 # Make a simple program wherein the user will able to input all the information
 def Gui_display():
     # create a padding for personal information
     personalinfo_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    personalinfo_frame.place(x=5, y=50, width=490, height=185)
+    personalinfo_frame.place(x=5, y=50, width=835, height=185)
     personalinfo_label = Label(Contact_tracing,text = "PERSONAL INFORMATION")
     personalinfo_label.place(x=15, y=40)
-    # Input name
-    name_label = Label(Contact_tracing,text = "NAME : ")
-    name_label.place(x=10, y=70)
-    name_entry = Entry(Contact_tracing,width="30") 
-    name_entry.place(x=70,y=70)
-    # Suffix
-    suffix_label = Label(Contact_tracing, text= "SUFFIX : ")
-    suffix_label.place(x=275,y=70)
-    suffix_entry = Entry(Contact_tracing,width="18")
-    suffix_entry.place(x=340,y=70)
+    # Input last name
+    lastname_label = Label(Contact_tracing,text = "LAST NAME : ")
+    lastname_label.place(x=10, y=70)
+    lastname_labelname_entry = Entry(Contact_tracing,width="28") 
+    lastname_labelname_entry.place(x=90,y=70)
+    # input middle name
+    middlename_label = Label(Contact_tracing, text= "MIDDLE NAME : ")
+    middlename_label.place(x=275,y=70)
+    middlename_entry = Entry(Contact_tracing,width="28")
+    middlename_entry.place(x=370,y=70)
+    # input first name
+    firstname_label = Label(Contact_tracing,text = "FIRST NAME : ")
+    firstname_label.place(x=560, y=70)
+    firstname_labelname_entry = Entry(Contact_tracing,width="28") 
+    firstname_labelname_entry.place(x=640,y=70)
     # Input age
     age_label = Label(Contact_tracing, text= "AGE : ")
     age_label.place(x=10, y=110)
-    age_entry = Scale(Contact_tracing, from_=1, to=100, length="385",orient="horizontal")
+    age_entry = Scale(Contact_tracing, from_=1, to=100, length="748",orient="horizontal")
     age_entry.place(x=65,y=90)
     # Input Address
     address_label = Label(Contact_tracing, text= "ADDRESS : ")
     address_label.place(x=10, y=140)
-    address_entry = Entry(Contact_tracing,width="60") 
+    address_entry = Entry(Contact_tracing,width="120") 
     address_entry.place(x=90,y=140)
     # Input Phone number
     contnum_label = Label(Contact_tracing, text= "CONTACT NUMBER : ")
     contnum_label.place(x=10, y=170)
-    contnum_entry = Entry(Contact_tracing,width="51")
-    contnum_entry.place(x=145, y=170)
+    contnum_entry = Entry(Contact_tracing,width="55")
+    contnum_entry.place(x=135, y=170)
+    # input gender
+    gender_label = Label(Contact_tracing, text= "GENDER : ")
+    gender_label.place(x=485, y=170)
+    gender_entry = ttk.Combobox(Contact_tracing, width="40",values=["Prefer Not to Say", "Male", "Female", "LGBTQ+", "Other"])
+    gender_entry.place(x=550,y=170)
     # Input Email
     email_label = Label(Contact_tracing, text= "E-MAIL : ")
     email_label.place(x=10, y=200)
-    email_entry = Entry(Contact_tracing,width="62")
+    email_entry = Entry(Contact_tracing,width="122")
     email_entry.place(x=80, y=200)
     # create a padding for asking users for their contact history
     tracing_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    tracing_frame.place(x=5, y=250, width=490, height=230)
+    tracing_frame.place(x=5, y=250, width=835, height=230)
     tracing_label = Label(Contact_tracing,text = "CONTACT TRACING")
     tracing_label.place(x=15, y=240)
     # Ask the user if they are vaccinated
@@ -104,7 +114,7 @@ def Gui_display():
     no_btn.place(x=10,y=445)
     #(PARENT OR GUARDIAN INFORMATION)
     parentinfo_frame = Frame(Contact_tracing, bd=2, relief="groove")
-    parentinfo_frame.place(x=5, y=500, width=490, height=80)
+    parentinfo_frame.place(x=5, y=500, width=835, height=80)
     parentinfo_label = Label(Contact_tracing,text = "PARENT / GUARDIAN INFORMATION")
     parentinfo_label.place(x=15, y=490)
     # Input name
@@ -118,13 +128,13 @@ def Gui_display():
     vacstatus_entry = ttk.Combobox(Contact_tracing, width="50",values=["Mother", "Father", "Step-Mother", "Step-Father", "Auntie", "Uncle", "Sister", "Brother"])
     vacstatus_entry.place(x=120,y=545)
     # add a statement assuring that all the data submitted will be confidential and will be protected.
-    agreement_label = Label(Contact_tracing,text = "You can be sure that any information you give will be handled with the highest level of \rconfidentiality and won't be shared with any third party.")
-    agreement_label.place(x=10, y=590)
+    agreement_label = Label(Contact_tracing,text = "You can be sure that any information you give will be handled with the highest level of confidentiality and won't be shared with any third party.")
+    agreement_label.place(x=15, y=590)
     agreement_btn = Checkbutton(Contact_tracing, text="I AGREE") 
-    agreement_btn.place(x=190,y=620)
+    agreement_btn.place(x=360,y=610)
     # create a submit button 
     submit_btn = Button(Contact_tracing, text="SUBMIT", )
-    submit_btn.place(x=200, y=650)
+    submit_btn.place(x=365, y=635)
 # collect all the data
     # create a data base 
     # print all the data into a txt file 
