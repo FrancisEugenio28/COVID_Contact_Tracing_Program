@@ -87,10 +87,12 @@ class search_information:
         tree = ttk.Treeview(tree_frame)
         tree.grid(row=0, column=0, sticky="nsew")
 
-        tree_scroll = Scrollbar(tree_frame, orient=VERTICAL, command=tree.yview)
-        tree_scroll.grid(row=0, column=1, sticky="ns")
+        tree_scroll_y = Scrollbar(tree_frame, orient=VERTICAL, command=tree.yview)
+        tree_scroll_y.grid(row=0, column=1, sticky="ns")
+        tree_scroll_x = Scrollbar(tree_frame, orient=HORIZONTAL, command=tree.xview)
+        tree_scroll_x.grid(row=1, column=0, columnspan=2, sticky="ew")
 
-        tree.configure(yscrollcommand=tree_scroll.set)
+        tree.configure(yscrollcommand=tree_scroll_y.set, xscrollcommand=tree_scroll_x.set)
     # define columns for the treeview
         tree["columns"] = [
             "Reference Number", "Last Name", "Middle Name", "First Name",
@@ -101,27 +103,10 @@ class search_information:
         ]
     # format columns
         tree.column("#0", width=0, stretch=NO)
-        tree.column("Reference Number", anchor=CENTER, width=100)
-        tree.column("Last Name", anchor=W, width=100)
-        tree.column("Middle Name", anchor=W, width=100)
-        tree.column("First Name", anchor=W, width=100)
-        tree.column("Age", anchor=CENTER, width=60)
-        tree.column("Address", anchor=W, width=200)
-        tree.column("Contact Number", anchor=W, width=120)
-        tree.column("Gender", anchor=CENTER, width=80)
-        tree.column("Email", anchor=W, width=200)
-        tree.column("Vaccination Status", anchor=W, width=150)
-        tree.column("Symptoms", anchor=W, width=200)
-        tree.column("Exposure[yes]", anchor=CENTER, width=100)
-        tree.column("Exposure[no]", anchor=CENTER, width=100)
-        tree.column("Guardian Last Name", anchor=W, width=100)
-        tree.column("Guardian First Name", anchor=W, width=100)
-        tree.column("Guardian Relationship", anchor=W, width=120)
-        tree.column("Guardian Contact Number", anchor=W, width=120)
-        tree.column("Guardian Email", anchor=W, width=200)
-    # create headings
         for column in tree["columns"]:
-            tree.heading(column, command=lambda c=column: self.sort_treeview(tree,c))
+            tree.column(column, anchor=W, width=150)
+            tree.heading(column, text=column)
+
     # insert data rows
         for entry in self.data_list:
             tree.insert("", "end", values=entry)
