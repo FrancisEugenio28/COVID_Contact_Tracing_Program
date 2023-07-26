@@ -29,17 +29,24 @@ class search_information:
         # create a forget button for those who forget their reference number
         self.forget_text = Label(self.search_gui, text='Note: in case you forgot your own reference number please click "Forgot Reference Number"\r for other ways of searching your inforamtion')
         self.forget_text.place(x=25,y=130)
-        self.forget_btn = Button(self.search_gui, text='Forgot Reference Number')
+        self.forget_btn = Button(self.search_gui, text='Forgot Reference Number', command=self.create_new_tab)
         self.forget_btn.place(x=190,y=175)
 
         # create a button for search
-        self.search_btn = Button(self.search_gui, text='Search')
+        self.search_btn = Button(self.search_gui, text='Search', command=self.search_entry)
         self.search_btn.place(x=480,y=97)
 
         self.data_list = self.read_csv()
 
         self.search_gui.mainloop()
-        # add function for each entry
+
+    # add function for each entry
+    def create_new_tab(self):
+        # Function to create another tab when the "Forgot Reference Number" button is pressed
+        new_tab = Toplevel(self.search_gui)
+        new_tab.title("Other way to see your information")
+
+        # Add contents to the forgot the reference button choice
 
     # read the csv for possible entry
     def read_csv(self):
@@ -52,7 +59,7 @@ class search_information:
         except FileNotFoundError:
             messagebox.showerror("Error", "CSV file not found!")
         return data_list
-
+    
     def search_entry(self):
         reference_number = self.referencenum_entry.get()
 
@@ -65,3 +72,5 @@ class search_information:
         else:
             messagebox.showwarning("Warning", "Please enter your reference number!")
         # display the entry 
+if __name__ == "__main__":
+    search_app = search_information()
