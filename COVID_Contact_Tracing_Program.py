@@ -165,7 +165,7 @@ class registration:
         self.Contact_tracing.mainloop()
 
     # Function to generate a random referral number
-    def generate_referral_number(self):
+    def generate_reference_number(self):
         return random.randint(100000, 999999)
     
     # collect all the data
@@ -205,10 +205,7 @@ class registration:
         }
 
         # Generate a random referral number
-        referral_number = self.generate_referral_number()
-        
-        # Add the referral number to the data list
-        data.append(referral_number)
+        reference_number = self.generate_reference_number()
         
         if all(value == '' for value in symptoms_data.values()):
             messagebox.showwarning("Symptoms Not Selected", "Please select at least one symptom.")
@@ -224,6 +221,7 @@ class registration:
 
         # Create a list of collected data
         data = [
+            reference_number, # we add a reference number for the data 
             last_name,
             middle_name,
             first_name,
@@ -258,6 +256,7 @@ class registration:
             writer = csv.writer(file)
             if not file_checker:
                 writer.writerow([
+                    "Reference Number", 
                     "Last Name",
                     "Middle Name",
                     "First Name",
