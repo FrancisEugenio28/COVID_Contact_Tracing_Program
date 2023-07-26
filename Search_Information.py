@@ -85,7 +85,33 @@ class search_information:
 
         tree_scroll.config(command=tree.yview)
     # define columns for the treeview
+        tree["columns"] = [
+            "Reference Number", "Last Name", "Middle Name", "First Name",
+            "Age", "Address", "Contact Number", "Gender", "Email",
+            "Vaccination Status", "Symptoms", "Exposure[yes]", "Exposure[no]",
+            "Guardian Last Name", "Guardian First Name", "Guardian Relationship",
+            "Guardian Contact Number", "Guardian Email"
+        ]
     # format columns
+        tree.column("#0", width=0, stretch=NO)
+        tree.column("Reference Number", anchor=CENTER, width=100)
+        tree.column("Last Name", anchor=W, width=100)
+        tree.column("Middle Name", anchor=W, width=100)
+        tree.column("First Name", anchor=W, width=100)
+        tree.column("Age", anchor=CENTER, width=60)
+        tree.column("Address", anchor=W, width=200)
+        tree.column("Contact Number", anchor=W, width=120)
+        tree.column("Gender", anchor=CENTER, width=80)
+        tree.column("Email", anchor=W, width=200)
+        tree.column("Vaccination Status", anchor=W, width=150)
+        tree.column("Symptoms", anchor=W, width=200)
+        tree.column("Exposure[yes]", anchor=CENTER, width=100)
+        tree.column("Exposure[no]", anchor=CENTER, width=100)
+        tree.column("Guardian Last Name", anchor=W, width=100)
+        tree.column("Guardian First Name", anchor=W, width=100)
+        tree.column("Guardian Relationship", anchor=W, width=120)
+        tree.column("Guardian Contact Number", anchor=W, width=120)
+        tree.column("Guardian Email", anchor=W, width=200)
     # create headings
     # insert data rows
 
