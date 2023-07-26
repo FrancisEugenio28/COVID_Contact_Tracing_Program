@@ -48,6 +48,12 @@ class search_information:
 
         # Add contents to the forgot the reference button choice
 
+    def create_ref_tab(self):
+        # create another tab for displaying all the inputs in the csv file
+        ref_tab = Toplevel(self.search_gui)
+        ref_tab.title("Your Information")
+        self.show_data(ref_tab)
+
     # read the csv for possible entry
     def read_csv(self):
         data_list = []
@@ -67,6 +73,7 @@ class search_information:
             for entry in self.data_list:
                 if reference_number in entry:
                     messagebox.showinfo("Entry Found", "Your reference number is listed in the data file.")
+                    self.create_ref_tab()
                     return
             messagebox.showinfo("Entry Not Found", "Your reference number is not listed in the data file.")
         else:
@@ -113,7 +120,11 @@ class search_information:
         tree.column("Guardian Contact Number", anchor=W, width=120)
         tree.column("Guardian Email", anchor=W, width=200)
     # create headings
+        for column in tree["columns"]:
+            tree.heading(column, text=column)
     # insert data rows
+        for entry in self.data_list:
+            tree.insert("", "end", values=entry)
 
 if __name__ == "__main__":
     search_app = search_information()
