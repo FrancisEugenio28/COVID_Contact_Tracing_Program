@@ -13,9 +13,9 @@ class registration:
         self.Contact_tracing.geometry("850x590")
         self.radio = IntVar()
         # create a padding for header
-        self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove")
+        self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
         self.head_frame.place(x=5, y=5, width=835, height=100)
-        self.head_label = Label(self.Contact_tracing, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"))
+        self.head_label = Label(self.head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#FF0000", fg="white")
         self.head_label.pack(pady=10)
         # create a padding for personal information
         self.personalinfo_frame = Frame(self.Contact_tracing, bd=2, relief="groove")
@@ -289,7 +289,7 @@ class registration:
             writer.writerow(data)
 
         # Show a success message after storing the data
-        messagebox.showinfo("Data Saved", "Your data has been saved successfully!")
+        messagebox.showinfo("Data Saved", f"Your data has been saved successfully! Reference Number: {reference_number}")
         # Close the program
         self.Contact_tracing.destroy()
         
