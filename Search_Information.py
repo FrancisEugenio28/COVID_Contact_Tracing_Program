@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
+import csv
 
 
 # create a class 
@@ -33,7 +35,33 @@ class search_information:
         # create a button for search
         self.search_btn = Button(self.search_gui, text='Search')
         self.search_btn.place(x=480,y=97)
-# add function for each entry
-# read the csv for possible entry
-# display the entry 
+
+        self.data_list = self.read_csv()
+
         self.search_gui.mainloop()
+        # add function for each entry
+
+    # read the csv for possible entry
+    def read_csv(self):
+        data_list = []
+        try:
+            with open("Data_List.csv", newline='') as csvfile:
+                reader = csv.reader(csvfile)
+                for row in reader:
+                    data_list.append(row)
+        except FileNotFoundError:
+            messagebox.showerror("Error", "CSV file not found!")
+        return data_list
+
+    def search_entry(self):
+        reference_number = self.referencenum_entry.get()
+
+        if reference_number:
+            for entry in self.data_list:
+                if reference_number in entry:
+                    messagebox.showinfo("Entry Found", "Your reference number is listed in the data file.")
+                    return
+            messagebox.showinfo("Entry Not Found", "Your reference number is not listed in the data file.")
+        else:
+            messagebox.showwarning("Warning", "Please enter your reference number!")
+        # display the entry 
