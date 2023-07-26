@@ -121,10 +121,12 @@ class search_information:
         tree.column("Guardian Email", anchor=W, width=200)
     # create headings
         for column in tree["columns"]:
-            tree.heading(column, text=column)
+            tree.heading(column, command=lambda c=column: self.sort_treeview(tree,c))
     # insert data rows
         for entry in self.data_list:
             tree.insert("", "end", values=entry)
-
+    # configure the grids weight to resize the treeview properly
+        tree_frame.columnconfigure(0, weight=1)
+        tree_frame.rowconfigure(0, weight=1)
 if __name__ == "__main__":
     search_app = search_information()
