@@ -12,6 +12,7 @@ class registration:
         self.Contact_tracing.title("COVID-19 Contact Tracing")
         self.Contact_tracing.geometry("850x630")
         self.radio = IntVar()
+        self.agreement_var = IntVar()
         # create a padding for header
         self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
         self.head_frame.place(x=5, y=5, width=835, height=60)
@@ -110,8 +111,9 @@ class registration:
         self.lsmell_btn = Checkbutton(self.Contact_tracing, text="Loss of Smell") 
         self.lsmell_btn.place(x=110,y=405)
         # none of the above
-        self.none_btn = Checkbutton(self.Contact_tracing, text="None of the Above") 
-        self.none_btn.place(x=210,y=405)
+        self.none_var = IntVar()  
+        self.none_btn = Checkbutton(self.Contact_tracing, text="None of the Above", variable=self.none_var)
+        self.none_btn.place(x=210, y=405)
         # Ask the users if they been with a person with possible symptoms
         exposure_label = Label(self.Contact_tracing, text="HAVE YOU HAD EXPOSURE TO A PROBABLE OR CONFIRMED CASE IN LAST 14 DAYS?")
         exposure_label.place(x=370,y=325)
@@ -154,10 +156,10 @@ class registration:
         self.parent_email_entry = Entry(self.Contact_tracing,width="58")
         self.parent_email_entry.place(x=450, y=500)
         # add a statement assuring that all the data submitted will be confidential and will be protected.
-        agreement_label = Label(self.Contact_tracing,text = "You can be sure that any information you give will be handled with the highest level of confidentiality and won't be shared with any third party.")
+        agreement_label = Label(self.Contact_tracing, text="You can be sure that any information you give will be handled with the highest level of confidentiality and won't be shared with any third party.")
         agreement_label.place(x=40, y=540)
-        self.agreement_btn = Checkbutton(self.Contact_tracing, text="I AGREE") 
-        self.agreement_btn.place(x=360,y=560)
+        self.agreement_btn = Checkbutton(self.Contact_tracing, text="I AGREE", variable=self.agreement_var) 
+        self.agreement_btn.place(x=360, y=560)
         # create a submit button 
         self.submit_btn = Button(self.Contact_tracing, text="SUBMIT", command= self.collect_data )
         self.submit_btn.place(x=365, y=595)
@@ -170,24 +172,27 @@ class registration:
     
     # collect all the data
     def collect_data(self):
-        last_name = self.lastname_entry.get()
-        middle_name = self.middlename_entry.get()
-        first_name = self.firstname_entry.get()
+        last_name = self.lastname_entry.get().upper()
+        middle_name = self.middlename_entry.get().upper()
+        first_name = self.firstname_entry.get().upper()
         age = self.age_entry.get()
-        address = self.address_entry.get()
+        address = self.address_entry.get().upper()
         contact_num = self.contnum_entry.get()
         gender = self.gender_entry.get()
-        email = self.email_entry.get()
+        email = self.email_entry.get().upper()
         vaccination_status = self.vacstatus_entry.get()
-        yes = self.yes_btn.getboolean()
-        no = self.no_btn.getboolean()
-        guardian_last_name = self.parent_lastname_entry.get()
-        guardian_first_name = self.parent_firstname_entry.get()
+        guardian_last_name = self.parent_lastname_entry.get().upper()
+        guardian_first_name = self.parent_firstname_entry.get().upper()
         guardian_relationship = self.relationship_entry.get()
         guardian_contact_num = self.parent_contnum_entry.get()
-        guardian_email = self.parent_email_entry.get()
-        agreement = self.agreement_btn.getboolean()
-        
+        guardian_email = self.parent_email_entry.get().upper()
+        agreement = self.agreement_var.get() == 1
+
+        # Get the value of the selected radio button (1 for YES, 2 for NO)
+        exposure_value = self.radio.get()
+        yes = True if exposure_value == 1 else False
+        no = True if exposure_value == 2 else False
+
         # Create a dictionary to store the symptoms data
         symptoms_data = {
             "Fever": self.fever_btn.get(),
