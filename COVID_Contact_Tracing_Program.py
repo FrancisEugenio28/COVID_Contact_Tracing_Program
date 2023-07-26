@@ -13,6 +13,18 @@ class registration:
         self.Contact_tracing.geometry("850x630")
         self.radio = IntVar()
         self.agreement_var = IntVar()
+        self.fever_btn_var = IntVar()
+        self.cough_btn_var = IntVar()
+        self.cold_btn_var = IntVar()
+        self.bodypain_btn_var = IntVar()
+        self.sorethroat_btn_var = IntVar()
+        self.diarrhea_btn_var = IntVar()
+        self.headache_btn_var = IntVar()
+        self.shortbreath_btn_var = IntVar()
+        self.diffbreath_btn_var = IntVar()
+        self.ltaste_btn_var = IntVar()
+        self.lsmell_btn_var = IntVar()
+        self.none_var = IntVar()
         # create a padding for header
         self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
         self.head_frame.place(x=5, y=5, width=835, height=60)
@@ -78,40 +90,39 @@ class registration:
         symptoms_label.place(x=10,y=325)
         # create checkbutton for each symptoms
         # fever
-        self.fever_btn = Checkbutton(self.Contact_tracing, text="Fever") 
+        self.fever_btn = Checkbutton(self.Contact_tracing, text="Fever", variable=self.fever_btn_var) 
         self.fever_btn.place(x=10,y=345)
         # cough
-        self.cough_btn = Checkbutton(self.Contact_tracing, text="Cough") 
+        self.cough_btn = Checkbutton(self.Contact_tracing, text="Cough", variable=self.cough_btn_var) 
         self.cough_btn.place(x=10,y=365)
         # colds
-        self.cold_btn = Checkbutton(self.Contact_tracing, text="Colds") 
+        self.cold_btn = Checkbutton(self.Contact_tracing, text="Colds", variable=self.cold_btn_var) 
         self.cold_btn.place(x=10,y=385)
         # Body pains
-        self.bodypain_btn = Checkbutton(self.Contact_tracing, text="Body Pain") 
+        self.bodypain_btn = Checkbutton(self.Contact_tracing, text="Body Pain", variable=self.bodypain_btn_var) 
         self.bodypain_btn.place(x=110,y=345)
         # sore throat
-        self.sorethroat_btn = Checkbutton(self.Contact_tracing, text="Sore Throat") 
+        self.sorethroat_btn = Checkbutton(self.Contact_tracing, text="Sore Throat", variable=self.sorethroat_btn_var) 
         self.sorethroat_btn.place(x=110,y=365)
         # diarrhea
-        self.diarrhea_btn = Checkbutton(self.Contact_tracing, text="Diarrhea") 
+        self.diarrhea_btn = Checkbutton(self.Contact_tracing, text="Diarrhea", variable=self.diarrhea_btn_var) 
         self.diarrhea_btn.place(x=110,y=385)
         # headache
-        self.headache_btn = Checkbutton(self.Contact_tracing, text="Headache") 
+        self.headache_btn = Checkbutton(self.Contact_tracing, text="Headache", variable=self.headache_btn_var) 
         self.headache_btn.place(x=210,y=345)
         # shortness of breath
-        self.shortbreath_btn = Checkbutton(self.Contact_tracing, text="Shortness of Breath") 
+        self.shortbreath_btn = Checkbutton(self.Contact_tracing, text="Shortness of Breath", variable=self.shortbreath_btn_var) 
         self.shortbreath_btn.place(x=210,y=365)
         # difficulty of breathing
-        self.diffbreath_btn = Checkbutton(self.Contact_tracing, text="Difficulty of Breathing") 
+        self.diffbreath_btn = Checkbutton(self.Contact_tracing, text="Difficulty of Breathing", variable=self.diffbreath_btn_var) 
         self.diffbreath_btn.place(x=210,y=385)
         # loss of taste
-        self.ltaste_btn = Checkbutton(self.Contact_tracing, text="Loss of Taste") 
+        self.ltaste_btn = Checkbutton(self.Contact_tracing, text="Loss of Taste", variable=self.ltaste_btn_var) 
         self.ltaste_btn.place(x=10,y=405)
         # loss of smell
-        self.lsmell_btn = Checkbutton(self.Contact_tracing, text="Loss of Smell") 
+        self.lsmell_btn = Checkbutton(self.Contact_tracing, text="Loss of Smell", variable=self.lsmell_btn_var) 
         self.lsmell_btn.place(x=110,y=405)
         # none of the above
-        self.none_var = IntVar()  
         self.none_btn = Checkbutton(self.Contact_tracing, text="None of the Above", variable=self.none_var)
         self.none_btn.place(x=210, y=405)
         # Ask the users if they been with a person with possible symptoms
@@ -195,19 +206,19 @@ class registration:
 
         # Create a dictionary to store the symptoms data
         symptoms_data = {
-            "Fever": self.fever_btn.get(),
-            "Cough": self.cough_btn.get(),
-            "Colds": self.cold_btn.get(),
-            "Body Pain": self.bodypain_btn.get(),
-            "Sore Throat": self.sorethroat_btn.get(),
-            "Diarrhea": self.diarrhea_btn.get(),
-            "Headache": self.headache_btn.get(),
-            "Shortness of Breath": self.shortbreath_btn.get(),
-            "Difficulty of Breathing": self.diffbreath_btn.get(),
-            "Loss of Taste": self.ltaste_btn.get(),
-            "Loss of Smell": self.lsmell_btn.get(),
-            "None of the Above": self.none_btn.get()
-        }
+        "Fever": self.fever_btn_var.get(),
+        "Cough": self.cough_btn_var.get(),
+        "Colds": self.cold_btn_var.get(),
+        "Body Pain": self.bodypain_btn_var.get(),
+        "Sore Throat": self.sorethroat_btn_var.get(),
+        "Diarrhea": self.diarrhea_btn_var.get(),
+        "Headache": self.headache_btn_var.get(),
+        "Shortness of Breath": self.shortbreath_btn_var.get(),
+        "Difficulty of Breathing": self.diffbreath_btn_var.get(),
+        "Loss of Taste": self.ltaste_btn_var.get(),
+        "Loss of Smell": self.lsmell_btn_var.get(),
+        "None of the Above": self.none_var.get()
+    }
 
         # Generate a random referral number
         reference_number = self.generate_reference_number()
@@ -220,7 +231,7 @@ class registration:
             messagebox.showwarning("Agreement Required", "Please check the agreement box before submitting.")
             return
         
-        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vaccination_status or not yes or not no or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
+        if not last_name or not middle_name or not first_name or not age or not address or not contact_num or not gender or not email or not vaccination_status or not guardian_last_name or not guardian_first_name or not guardian_relationship or not guardian_contact_num or not guardian_email:
             messagebox.showwarning("Please fill up all the Entries.")
             return
 
@@ -271,20 +282,9 @@ class registration:
                     "Gender",
                     "Email",
                     "Vaccination Status",
-                    "Fever",
-                    "Cough",
-                    "Colds",
-                    "Body Pain",
-                    "Sore Throat",
-                    "Diarrhea",
-                    "Headache",
-                    "Shortness of Breath",
-                    "Difficulty of Breathing",
-                    "Loss of Taste",
-                    "Loss of Smell",
-                    "None of the Above",
-                    "Exposure (Yes)",
-                    "Exposure (No)",
+                    "Symptoms",
+                    "Exposure[yes]",
+                    "Exposure[no]",
                     "Guardian Last Name",
                     "Guardian First Name",
                     "Guardian Relationship",

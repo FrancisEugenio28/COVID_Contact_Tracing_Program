@@ -52,7 +52,7 @@ class search_information:
     def read_csv(self):
         data_list = []
         try:
-            with open("Data_List.csv", newline='') as csvfile:
+            with open("contact_tracing_data.csv", newline='') as csvfile:
                 reader = csv.reader(csvfile)
                 for row in reader:
                     data_list.append(row)
