@@ -11,6 +11,7 @@ class registration:
         self.Contact_tracing = Tk()
         self.Contact_tracing.title("COVID-19 Contact Tracing")
         self.Contact_tracing.geometry("850x630")
+        self.Contact_tracing.resizable(False, False)
         self.radio = IntVar()
         self.agreement_var = IntVar()
         self.fever_btn_var = IntVar()

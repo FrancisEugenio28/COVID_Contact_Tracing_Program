@@ -71,6 +71,23 @@ class search_information:
             messagebox.showinfo("Entry Not Found", "Your reference number is not listed in the data file.")
         else:
             messagebox.showwarning("Warning", "Please enter your reference number!")
-        # display the entry 
+        
+    def show_data(self, tab):
+    # function to display data in a new tab using a treeview widget
+        tree_frame = Frame(tab)
+        tree_frame.pack(fill="both", expand=True)
+
+        tree_scroll = Scrollbar(tree_frame)
+        tree_scroll.pack(side=RIGHT, fill=Y)
+
+        tree = ttk.Treeview(tree_frame, yscrollcommand=tree_scroll.set)
+        tree.pack(fill="both", expand=True)
+
+        tree_scroll.config(command=tree.yview)
+    # define columns for the treeview
+    # format columns
+    # create headings
+    # insert data rows
+
 if __name__ == "__main__":
     search_app = search_information()
