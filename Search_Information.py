@@ -84,13 +84,13 @@ class search_information:
         tree_frame = Frame(tab)
         tree_frame.pack(fill="both", expand=True)
 
-        tree_scroll = Scrollbar(tree_frame)
-        tree_scroll.pack(side=RIGHT, fill=Y)
+        tree = ttk.Treeview(tree_frame)
+        tree.grid(row=0, column=0, sticky="nsew")
 
-        tree = ttk.Treeview(tree_frame, yscrollcommand=tree_scroll.set)
-        tree.pack(fill="both", expand=True)
+        tree_scroll = Scrollbar(tree_frame, orient=VERTICAL, command=tree.yview)
+        tree_scroll.grid(row=0, column=1, sticky="ns")
 
-        tree_scroll.config(command=tree.yview)
+        tree.configure(yscrollcommand=tree_scroll.set)
     # define columns for the treeview
         tree["columns"] = [
             "Reference Number", "Last Name", "Middle Name", "First Name",
