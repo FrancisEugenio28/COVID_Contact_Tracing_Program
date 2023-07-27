@@ -10,7 +10,7 @@ class search_information:
 # create a GUI for seach
         self.search_gui = Tk()
         self.search_gui.title("Search Your Entry")
-        self.search_gui.geometry('550x250')
+        self.search_gui.geometry('550x245')
 
         # Set the width of the head_frame to the width of the search_gui
         self.head_frame = Frame(self.search_gui, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
@@ -45,7 +45,7 @@ class search_information:
         # Function to create another tab when the "Forgot Reference Number" button is pressed
         new_tab = Toplevel(self.search_gui)
         new_tab.title("Other way to see your information")
-        new_tab.geometry('820x400')
+        new_tab.geometry('820x325')
         # heading
         head_frame = Frame(new_tab, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
         head_frame.place(x=5, y=5, width=810, height=60)
@@ -53,48 +53,53 @@ class search_information:
         head_label.pack(pady=10)
         # padding
         padding_frame = Frame(new_tab, bd=2, relief="groove")
-        padding_frame.place(x=5, y=70, width=810, height=325)
+        padding_frame.place(x=5, y=70, width=810, height=250)
+        # instruction
+        instruction_label = Label(new_tab, text="This pannel will be the other way for you to confirm that you've entered your information in the application. May you please fill all the needed \rinformation")
+        instruction_label.place(x=25,y=80)
         # input last name
         lastname_label = Label(new_tab,text = "LAST NAME : ")
-        lastname_label.place(x=10, y=90)
+        lastname_label.place(x=10, y=120)
         lastname_entry = Entry(new_tab,width="28") 
-        lastname_entry.place(x=90,y=90)
+        lastname_entry.place(x=90,y=120)
         # input middle name
         middlename_label = Label(new_tab,text = "MIDDLE NAME : ")
-        middlename_label.place(x=270, y=90)
+        middlename_label.place(x=270, y=120)
         middlename_entry = Entry(new_tab,width="28") 
-        middlename_entry.place(x=365,y=90)
+        middlename_entry.place(x=365,y=120)
         # input first name
         firstname_label = Label(new_tab,text = "FIRST NAME : ")
-        firstname_label.place(x=545, y=90)
+        firstname_label.place(x=545, y=120)
         firstname_entry = Entry(new_tab,width="28") 
-        firstname_entry.place(x=625,y=90)
+        firstname_entry.place(x=625,y=120)
         # age
         age_label = Label(new_tab, text= "AGE : ")
-        age_label.place(x=10, y=130)
+        age_label.place(x=10, y=160)
         age_entry = Scale(new_tab, from_=1, to=100, length="730",orient="horizontal")
-        age_entry.place(x=65,y=110)
+        age_entry.place(x=65,y=140)
         # address
         address_label = Label(new_tab, text="ADDRESS : ")
-        address_label.place(x=10,y=160)
+        address_label.place(x=10,y=190)
         address_entry = Entry(new_tab, width=120)
-        address_entry.place(x=75,y=160)
+        address_entry.place(x=75,y=190)
         # contact number
         contactnum_label = Label(new_tab, text="CONTACT NUMBER : ")
-        contactnum_label.place(x=10,y=190)
+        contactnum_label.place(x=10,y=220)
         contactnum_entry = Entry(new_tab, width='45')
-        contactnum_entry.place(x=130,y=190)
+        contactnum_entry.place(x=130,y=220)
         # gender
         gender_label = Label(new_tab, text="GENDER : ")
-        gender_label.place(x=410,y=190)
+        gender_label.place(x=410,y=220)
         gender_entry = ttk.Combobox(new_tab, width="50",values=["Prefer Not to Say", "Male", "Female", "LGBTQ+", "Other"])
-        gender_entry.place(x=475,y=190)
+        gender_entry.place(x=475,y=220)
         # email
         email_label = Label(new_tab, text="EMAIL : ")
-        email_label.place(x=10,y=220)
+        email_label.place(x=10,y=250)
         email_entry = Entry(new_tab, width=122)
-        email_entry.place(x=60,y=220)
+        email_entry.place(x=60,y=250)
         # create a search button
+        search_btn = Button(new_tab, text="Search")
+        search_btn.place(x=375,y=280)
         # read csv is there is a same input
         # print your info
 
