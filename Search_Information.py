@@ -80,8 +80,21 @@ class search_information:
         address_entry = Entry(new_tab, width=120)
         address_entry.place(x=75,y=160)
         # contact number
+        contactnum_label = Label(new_tab, text="CONTACT NUMBER : ")
+        contactnum_label.place(x=10,y=190)
+        contactnum_entry = Entry(new_tab, width='45')
+        contactnum_entry.place(x=130,y=190)
         # gender
+        gender_label = Label(new_tab, text="GENDER : ")
+        gender_label.place(x=410,y=190)
+        gender_entry = ttk.Combobox(new_tab, width="50",values=["Prefer Not to Say", "Male", "Female", "LGBTQ+", "Other"])
+        gender_entry.place(x=475,y=190)
         # email
+        email_label = Label(new_tab, text="EMAIL : ")
+        email_label.place(x=10,y=220)
+        email_entry = Entry(new_tab, width=122)
+        email_entry.place(x=60,y=220)
+        # create a search button
         # read csv is there is a same input
         # print your info
 
