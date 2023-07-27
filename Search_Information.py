@@ -100,6 +100,16 @@ class search_information:
         # create a search button
         search_btn = Button(new_tab, text="Search")
         search_btn.place(x=375,y=280)
+        # gather all the inputs 
+        def search_info(self):
+            last_name = lastname_entry.get().upper()
+            middle_name = middlename_entry.get().upper()
+            first_name = firstname_entry.get().upper()
+            age = age_entry.get().upper()
+            address = address_entry.get().upper()
+            contact_number = contactnum_entry.get().upper()
+            gender = gender_entry.get().upper()
+            email = email_entry.get().upper()
         # read csv is there is a same input
         # print your info
 
