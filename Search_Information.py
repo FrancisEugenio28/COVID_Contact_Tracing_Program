@@ -40,19 +40,29 @@ class search_information:
 
         self.search_gui.mainloop()
 
-    # add function for each entry
+    # add function for forgot button
     def create_new_tab(self):
         # Function to create another tab when the "Forgot Reference Number" button is pressed
         new_tab = Toplevel(self.search_gui)
         new_tab.title("Other way to see your information")
+        new_tab.geometry('800x400')
+        # input last name
+        # input middle name
+        # input first name
+        # age
+        # address
+        # contact number
+        # gender
+        # email
+        # read csv is there is a same input
+        # print your info
 
         # Add contents to the forgot the reference button choice
-
-    def create_ref_tab(self):
+    def create_info_tab(self):
         # create another tab for displaying all the inputs in the csv file
-        ref_tab = Toplevel(self.search_gui)
-        ref_tab.title("Your Information")
-        self.show_data(ref_tab)
+        info_tab = Toplevel(self.search_gui)
+        info_tab.title("Your Information")
+        self.show_data(info_tab)
 
     # read the csv for possible entry
     def read_csv(self):
