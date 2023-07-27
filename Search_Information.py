@@ -46,6 +46,14 @@ class search_information:
         new_tab = Toplevel(self.search_gui)
         new_tab.title("Other way to see your information")
         new_tab.geometry('800x400')
+        # heading
+        head_frame = Frame(new_tab, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
+        head_frame.place(x=5, y=5, width=790, height=60)
+        head_label = Label(head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#FF0000", fg="white")
+        head_label.pack(pady=10)
+        # padding
+        padding_frame = Frame(new_tab, bd=2, relief="groove")
+        padding_frame.place(x=5, y=70, width=790, height=325)
         # input last name
         # input middle name
         # input first name
