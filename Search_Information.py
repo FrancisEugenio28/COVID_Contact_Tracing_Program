@@ -45,18 +45,30 @@ class search_information:
         # Function to create another tab when the "Forgot Reference Number" button is pressed
         new_tab = Toplevel(self.search_gui)
         new_tab.title("Other way to see your information")
-        new_tab.geometry('800x400')
+        new_tab.geometry('820x400')
         # heading
         head_frame = Frame(new_tab, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
-        head_frame.place(x=5, y=5, width=790, height=60)
+        head_frame.place(x=5, y=5, width=810, height=60)
         head_label = Label(head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#FF0000", fg="white")
         head_label.pack(pady=10)
         # padding
         padding_frame = Frame(new_tab, bd=2, relief="groove")
-        padding_frame.place(x=5, y=70, width=790, height=325)
+        padding_frame.place(x=5, y=70, width=810, height=325)
         # input last name
+        lastname_label = Label(new_tab,text = "LAST NAME : ")
+        lastname_label.place(x=10, y=90)
+        lastname_entry = Entry(new_tab,width="28") 
+        lastname_entry.place(x=90,y=90)
         # input middle name
+        middlename_label = Label(new_tab,text = "MIDDLE NAME : ")
+        middlename_label.place(x=270, y=90)
+        middlename_entry = Entry(new_tab,width="28") 
+        middlename_entry.place(x=365,y=90)
         # input first name
+        firstname_label = Label(new_tab,text = "FIRST NAME : ")
+        firstname_label.place(x=545, y=90)
+        firstname_entry = Entry(new_tab,width="28") 
+        firstname_entry.place(x=625,y=90)
         # age
         # address
         # contact number
