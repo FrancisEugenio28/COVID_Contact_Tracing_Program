@@ -70,7 +70,15 @@ class search_information:
         firstname_entry = Entry(new_tab,width="28") 
         firstname_entry.place(x=625,y=90)
         # age
+        age_label = Label(new_tab, text= "AGE : ")
+        age_label.place(x=10, y=130)
+        age_entry = Scale(new_tab, from_=1, to=100, length="730",orient="horizontal")
+        age_entry.place(x=65,y=110)
         # address
+        address_label = Label(new_tab, text="ADDRESS : ")
+        address_label.place(x=10,y=160)
+        address_entry = Entry(new_tab, width=120)
+        address_entry.place(x=75,y=160)
         # contact number
         # gender
         # email
