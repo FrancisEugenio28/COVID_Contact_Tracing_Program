@@ -26,7 +26,7 @@ class search_information:
         self.referencenum_entry.place(x=255, y=100)
 
         # create an instance of ForgotRefNum
-        self.forgot_ref_num = ForgotRefNum()
+        self.forgot_ref_num = ForgotRefNum(self.search_gui)
 
         # create a forget button for those who forget their reference number
         self.forget_text = Label(self.search_gui, text='Note: in case you forgot your own reference number please click "Forgot Reference Number"\r for other ways of searching your information')
@@ -42,8 +42,78 @@ class search_information:
 
         self.search_gui.mainloop()
 
+    # Add contents to the forgot the reference button choice
+    def create_info_tab(self):
+        # create another tab for displaying all the inputs in the csv file
+        info_tab = Toplevel(self.search_gui)
+        info_tab.title("Your Information")
+        self.show_data(info_tab)
+
+    # read the csv for possible entry
+    def read_csv(self):
+        data_list = []
+        try:
+            with open("contact_tracing_data.csv", newline='') as csvfile:
+                reader = csv.reader(csvfile)
+                for row in reader:
+                    data_list.append(row)
+        except FileNotFoundError:
+            messagebox.showerror("Error", "CSV file not found!")
+        return data_list
+    
+    def search_entry(self):
+        reference_number = self.referencenum_entry.get()
+
+        if reference_number:
+            for entry in self.data_list:
+                if reference_number in entry:
+                    messagebox.showinfo("Entry Found", "Your reference number is listed in the data file.")
+                    self.create_ref_tab()
+                    return
+            messagebox.showinfo("Entry Not Found", "Your reference number is not listed in the data file.")
+        else:
+            messagebox.showwarning("Warning", "Please enter your reference number!")
+        
+    def show_data(self, tab):
+    # function to display data in a new tab using a treeview widget
+        tree_frame = Frame(tab)
+        tree_frame.pack(fill="both", expand=True)
+
+        tree = ttk.Treeview(tree_frame)
+        tree.grid(row=0, column=0, sticky="nsew")
+
+        tree_scroll_y = Scrollbar(tree_frame, orient=VERTICAL, command=tree.yview)
+        tree_scroll_y.grid(row=0, column=1, sticky="ns")
+        tree_scroll_x = Scrollbar(tree_frame, orient=HORIZONTAL, command=tree.xview)
+        tree_scroll_x.grid(row=1, column=0, columnspan=2, sticky="ew")
+
+        tree.configure(yscrollcommand=tree_scroll_y.set, xscrollcommand=tree_scroll_x.set)
+    # define columns for the treeview
+        tree["columns"] = [
+            "Reference Number", "Last Name", "Middle Name", "First Name",
+            "Age", "Address", "Contact Number", "Gender", "Email",
+            "Vaccination Status", "Symptoms", "Exposure[yes]", "Exposure[no]",
+            "Guardian Last Name", "Guardian First Name", "Guardian Relationship",
+            "Guardian Contact Number", "Guardian Email"
+        ]
+    # format columns
+        tree.column("#0", width=0, stretch=NO)
+        for column in tree["columns"]:
+            tree.column(column, anchor=W, width=150)
+            tree.heading(column, text=column)
+
+    # insert data rows
+        for entry in self.data_list:
+            tree.insert("", "end", values=entry)
+    # configure the grids weight to resize the treeview properly
+        tree_frame.columnconfigure(0, weight=1)
+        tree_frame.rowconfigure(0, weight=1)
+
     # add function for forgot button
 class ForgotRefNum:
+    def __init__(self, search_gui):
+        # store the search_gui instance for later use
+        self.search_gui = search_gui
     def create_new_tab(self):
         new_tab = Toplevel(self.search_gui)
         new_tab.title("Other way to see your information")
@@ -138,72 +208,5 @@ class ForgotRefNum:
                     break
             else:
                 print("No matching information found.")
-
-        # Add contents to the forgot the reference button choice
-    def create_info_tab(self):
-        # create another tab for displaying all the inputs in the csv file
-        info_tab = Toplevel(self.search_gui)
-        info_tab.title("Your Information")
-        self.show_data(info_tab)
-
-    # read the csv for possible entry
-    def read_csv(self):
-        data_list = []
-        try:
-            with open("contact_tracing_data.csv", newline='') as csvfile:
-                reader = csv.reader(csvfile)
-                for row in reader:
-                    data_list.append(row)
-        except FileNotFoundError:
-            messagebox.showerror("Error", "CSV file not found!")
-        return data_list
-    
-    def search_entry(self):
-        reference_number = self.referencenum_entry.get()
-
-        if reference_number:
-            for entry in self.data_list:
-                if reference_number in entry:
-                    messagebox.showinfo("Entry Found", "Your reference number is listed in the data file.")
-                    self.create_ref_tab()
-                    return
-            messagebox.showinfo("Entry Not Found", "Your reference number is not listed in the data file.")
-        else:
-            messagebox.showwarning("Warning", "Please enter your reference number!")
-        
-    def show_data(self, tab):
-    # function to display data in a new tab using a treeview widget
-        tree_frame = Frame(tab)
-        tree_frame.pack(fill="both", expand=True)
-
-        tree = ttk.Treeview(tree_frame)
-        tree.grid(row=0, column=0, sticky="nsew")
-
-        tree_scroll_y = Scrollbar(tree_frame, orient=VERTICAL, command=tree.yview)
-        tree_scroll_y.grid(row=0, column=1, sticky="ns")
-        tree_scroll_x = Scrollbar(tree_frame, orient=HORIZONTAL, command=tree.xview)
-        tree_scroll_x.grid(row=1, column=0, columnspan=2, sticky="ew")
-
-        tree.configure(yscrollcommand=tree_scroll_y.set, xscrollcommand=tree_scroll_x.set)
-    # define columns for the treeview
-        tree["columns"] = [
-            "Reference Number", "Last Name", "Middle Name", "First Name",
-            "Age", "Address", "Contact Number", "Gender", "Email",
-            "Vaccination Status", "Symptoms", "Exposure[yes]", "Exposure[no]",
-            "Guardian Last Name", "Guardian First Name", "Guardian Relationship",
-            "Guardian Contact Number", "Guardian Email"
-        ]
-    # format columns
-        tree.column("#0", width=0, stretch=NO)
-        for column in tree["columns"]:
-            tree.column(column, anchor=W, width=150)
-            tree.heading(column, text=column)
-
-    # insert data rows
-        for entry in self.data_list:
-            tree.insert("", "end", values=entry)
-    # configure the grids weight to resize the treeview properly
-        tree_frame.columnconfigure(0, weight=1)
-        tree_frame.rowconfigure(0, weight=1)
 if __name__ == "__main__":
     search_app = search_information()
