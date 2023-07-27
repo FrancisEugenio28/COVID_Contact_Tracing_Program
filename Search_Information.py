@@ -68,7 +68,7 @@ class search_information:
             for entry in self.data_list:
                 if reference_number in entry:
                     messagebox.showinfo("Entry Found", "Your reference number is listed in the data file.")
-                    self.create_ref_tab()
+                    self.create_info_tab()
                     return
             messagebox.showinfo("Entry Not Found", "Your reference number is not listed in the data file.")
         else:
@@ -206,8 +206,6 @@ class ForgotRefNum:
                                         f"Gender: {row['Gender']}\n"
                                         f"Email: {row['Email']}")
                     return
-
         messagebox.showerror("Wrong Credentials", "Wrong credentials. Please try again.")
-    
 if __name__ == "__main__":
     search_app = search_information()
