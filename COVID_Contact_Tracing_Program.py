@@ -27,9 +27,9 @@ class registration:
         self.lsmell_btn_var = IntVar()
         self.none_var = IntVar()
         # create a padding for header
-        self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove", bg="#FF0000")  # Stylish red color
+        self.head_frame = Frame(self.Contact_tracing, bd=2, relief="groove", bg="#e12c2c")  # Stylish red color
         self.head_frame.place(x=5, y=5, width=835, height=60)
-        self.head_label = Label(self.head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#FF0000", fg="white")
+        self.head_label = Label(self.head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#e12c2c", fg="white")
         self.head_label.pack(pady=10)
         # create a padding for personal information
         self.personalinfo_frame = Frame(self.Contact_tracing, bd=2, relief="groove")
@@ -298,5 +298,3 @@ class registration:
         messagebox.showinfo("Data Saved", f"Your data has been saved successfully! Reference Number: {reference_number}")
         # Close the program
         self.Contact_tracing.destroy()
-if __name__ == "__main__":
-    run_program = registration()

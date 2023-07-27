@@ -12,9 +12,9 @@ class search_information:
         self.search_gui.title("Search Your Entry")
         self.search_gui.geometry('550x245')
 
-        self.head_frame = Frame(self.search_gui, bd=2, relief="groove", bg="#FF0000")
+        self.head_frame = Frame(self.search_gui, bd=2, relief="groove", bg="#e12c2c")
         self.head_frame.place(x=5, y=5, width=540, height=60)
-        self.head_label = Label(self.head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#FF0000", fg="white")
+        self.head_label = Label(self.head_frame, text="CONTACT TRACING 2023-2024", font=("Helvetica", 20, "bold"), bg="#e12c2c", fg="white")
         self.head_label.pack(pady=10)
 
         padding_frame = Frame(self.search_gui, bd=2, relief="groove")
