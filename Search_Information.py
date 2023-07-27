@@ -187,24 +187,24 @@ class ForgotRefNum:
             csv_reader = csv.DictReader(csvfile)
             for row in csv_reader:
                 if (
-                    row["LAST_NAME"] == last_name
-                    and row["MIDDLE_NAME"] == middle_name
-                    and row["FIRST_NAME"] == first_name
-                    and row["AGE"] == age
-                    and row["ADDRESS"] == address
-                    and row["CONTACT_NUMBER"] == contact_number
-                    and row["GENDER"] == gender
-                    and row["EMAIL"] == email
+                    row["Last Name"] == last_name
+                    and row["Middle Name"] == middle_name
+                    and row["First Name"] == first_name
+                    and row["Age"] == age
+                    and row["Address"] == address
+                    and row["Contact Number"] == contact_number
+                    and row["Gender"] == gender
+                    and row["Email"] == email
                 ):
                     print("Your information:")
-                    print("Last Name:", row["LAST_NAME"])
-                    print("Middle Name:", row["MIDDLE_NAME"])
-                    print("First Name:", row["FIRST_NAME"])
-                    print("Age:", row["AGE"])
-                    print("Address:", row["ADDRESS"])
-                    print("Contact Number:", row["CONTACT_NUMBER"])
-                    print("Gender:", row["GENDER"])
-                    print("Email:", row["EMAIL"])
+                    print("Last Name:", row["Last Name"])
+                    print("Middle Name:", row["Middle Name"])
+                    print("First Name:", row["First Name"])
+                    print("Age:", row["Age"])
+                    print("Address:", row["Address"])
+                    print("Contact Number:", row["Contact Number"])
+                    print("Gender:", row["Gender"])
+                    print("Email:", row["Email"])
                     break
             else:
                 print("No matching information found.")
