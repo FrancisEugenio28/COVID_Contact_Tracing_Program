@@ -111,6 +111,33 @@ class search_information:
             gender = gender_entry.get().upper()
             email = email_entry.get().upper()
         # read csv is there is a same input
+            with open("contact_tracing_data.csv", "r") as csvfile:
+                csv_reader = csv.DictReader(csvfile)
+                for row in csv_reader:
+                    if (
+                        row["LAST_NAME"] == last_name
+                        and row["MIDDLE_NAME"] == middle_name
+                        and row["FIRST_NAME"] == first_name
+                        and row["AGE"] == age
+                        and row["ADDRESS"] == address
+                        and row["CONTACT_NUMBER"] == contact_number
+                        and row["GENDER"] == gender
+                        and row["EMAIL"] == email
+                    ):
+                        # print your info
+                        print("Your information:")
+                        print("Last Name:", row["LAST_NAME"])
+                        print("Middle Name:", row["MIDDLE_NAME"])
+                        print("First Name:", row["FIRST_NAME"])
+                        print("Age:", row["AGE"])
+                        print("Address:", row["ADDRESS"])
+                        print("Contact Number:", row["CONTACT_NUMBER"])
+                        print("Gender:", row["GENDER"])
+                        print("Email:", row["EMAIL"])
+                        break
+                else:
+                    # if no match is found, inform the user
+                    print("No matching information found.")
         # print your info
 
         # Add contents to the forgot the reference button choice
