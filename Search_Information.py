@@ -177,10 +177,10 @@ class ForgotRefNum:
         last_name = self.lastname_entry.get().upper()
         middle_name = self.middlename_entry.get().upper()
         first_name = self.firstname_entry.get().upper()
-        age = self.age_entry.get()
+        age = int(self.age_entry.get())
         address = self.address_entry.get().upper()
-        contact_number = self.contactnum_entry.get().upper()
-        gender = self.gender_entry.get().upper()
+        contact_number = self.contactnum_entry.get()
+        gender = self.gender_entry.get()
         email = self.email_entry.get().upper()
 
         with open("contact_tracing_data.csv", "r") as csvfile:
@@ -190,23 +190,24 @@ class ForgotRefNum:
                     row["Last Name"] == last_name
                     and row["Middle Name"] == middle_name
                     and row["First Name"] == first_name
-                    and row["Age"] == age
+                    and int(row["Age"]) == age
                     and row["Address"] == address
                     and row["Contact Number"] == contact_number
                     and row["Gender"] == gender
                     and row["Email"] == email
                 ):
-                    print("Your information:")
-                    print("Last Name:", row["Last Name"])
-                    print("Middle Name:", row["Middle Name"])
-                    print("First Name:", row["First Name"])
-                    print("Age:", row["Age"])
-                    print("Address:", row["Address"])
-                    print("Contact Number:", row["Contact Number"])
-                    print("Gender:", row["Gender"])
-                    print("Email:", row["Email"])
-                    break
-            else:
-                print("No matching information found.")
+                    messagebox.showinfo("Information Found, You've been registered", "Your information:\n"
+                                        f"Last Name: {row['Last Name']}\n"
+                                        f"Middle Name: {row['Middle Name']}\n"
+                                        f"First Name: {row['First Name']}\n"
+                                        f"Age: {row['Age']}\n"
+                                        f"Address: {row['Address']}\n"
+                                        f"Contact Number: {row['Contact Number']}\n"
+                                        f"Gender: {row['Gender']}\n"
+                                        f"Email: {row['Email']}")
+                    return
+
+        messagebox.showerror("Wrong Credentials", "Wrong credentials. Please try again.")
+    
 if __name__ == "__main__":
     search_app = search_information()
